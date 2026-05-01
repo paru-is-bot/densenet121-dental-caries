@@ -26,6 +26,26 @@ HISTORY    = os.path.join(RESULT_DIR, "training_history.json")
 CM_IMG     = os.path.join(RESULT_DIR, "confusion_matrix.png")
 PDF_PATH   = os.path.join(BASE_DIR,   "DenseNet121_Caries_Report.pdf")
 
+# ── Auto-download weights if missing ───────────────────────────────────────
+WEIGHTS_URL = (
+    "https://github.com/paru-is-bot/densenet121-dental-caries"
+    "/releases/download/v1.0/densenet121_caries_best.pth"
+)
+
+def _ensure_weights():
+    """Download model weights from GitHub Releases if not present locally."""
+    if os.path.exists(WEIGHTS):
+        return
+    import urllib.request
+    os.makedirs(RESULT_DIR, exist_ok=True)
+    st.info("⬇️ Downloading model weights from GitHub Releases (~27 MB) …")
+    try:
+        urllib.request.urlretrieve(WEIGHTS_URL, WEIGHTS)
+        st.success("✅ Weights downloaded successfully!")
+    except Exception as e:
+        st.error(f"❌ Could not download weights: {e}")
+        st.stop()
+
 CLASS_NAMES   = ["caries", "healthy"]
 IMG_SIZE      = 224
 IMAGENET_MEAN = [0.485, 0.456, 0.406]
@@ -52,6 +72,7 @@ def load_cm():
 # ── model ──────────────────────────────────────────────────────────────────
 @st.cache_resource
 def load_model():
+    _ensure_weights()
     import torch
     import torch.nn as nn
     from torchvision import models

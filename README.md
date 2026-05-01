@@ -70,28 +70,13 @@ with the sub-folders `train/`, `val/`, `test/` each containing two class folders
 > Download it from Kaggle (search *"teeth caries x-ray"*) and place it as shown above,  
 > or follow the preprocessing pipeline described in the notebook.
 
-### 4 — Get the trained weights (two options)
+### 4 — Get the trained weights
 
-**Option A – Use pre-trained weights (recommended)**
+**The app downloads the weights automatically on first launch** (~27 MB, one-time).  
+No manual steps needed — just run the app and it will fetch them from GitHub Releases.
 
-Download `training_results.zip` from the [Releases](../../releases) page (or from the  
-Kaggle notebook output), then extract it into the repo root:
-
-```bash
-# Windows (PowerShell)
-Expand-Archive training_results.zip -DestinationPath .
-
-# macOS / Linux
-unzip training_results.zip
-```
-
-This creates the `training_results/` folder with all required files.
-
-**Option B – Train from scratch**
-
-Open `densenet121-dental-caries.ipynb` in Jupyter / Kaggle / Colab and run all cells  
-(**GPU recommended**). After the final cell, `training_results.zip` is written to your  
-working directory. Extract it as above.
+> If you prefer to download manually, grab `densenet121_caries_best.pth` from the  
+> [Releases page](../../releases) and place it in `training_results/`.
 
 ### 5 — Launch the Streamlit app
 
