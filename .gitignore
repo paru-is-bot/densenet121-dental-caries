@@ -1,0 +1,33 @@
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Model weights (large binary — distribute via Releases or external storage)
+training_results/*.pth
+
+# Dataset (not committed — users download separately)
+dental_caries_dataset/
+
+# Zip archives (used for transferring training_results)
+*.zip
+
+# Streamlit secrets / config
+.streamlit/secrets.toml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Patch / temp scripts (generated during development)
+patch_notebook.py
+fix_cell4.py

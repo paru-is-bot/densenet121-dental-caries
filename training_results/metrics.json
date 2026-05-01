@@ -1,0 +1,12 @@
+{
+  "test_loss": 0.2555,
+  "accuracy": 0.9187,
+  "precision_weighted": 0.9173,
+  "recall_weighted": 0.9187,
+  "f1_weighted": 0.9144,
+  "class_names": [
+    "caries",
+    "healthy"
+  ],
+  "confusion_matrix": [[96, 2], [8, 17]]
+}
